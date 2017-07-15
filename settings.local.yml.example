@@ -4,6 +4,7 @@ server: 'server'
 use_ssl: true
 port: 6668
 channel: '#some_channel'
+refresh_period: 3600 #1 hour
 
 rss_urls:
   []

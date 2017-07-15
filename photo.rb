@@ -10,7 +10,7 @@ class PhotoPlugin
   include Cinch::Plugin
   attr_accessor :already_posted
 
-  timer 20, method: :check_and_post
+  timer Settings.refresh_period, method: :check_and_post
 
   def initialize(*args)
     super
