@@ -1,0 +1,9 @@
+user: 'user'
+nick: 'nick'
+server: 'server'
+use_ssl: true
+port: 6668
+channel: '#some_channel'
+
+rss_urls:
+  []
