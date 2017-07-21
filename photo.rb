@@ -32,7 +32,12 @@ class PhotoPlugin
   end
 
   def format_entry(entry)
-    "#{entry.title}   #{entry.url.gsub(/&?\?*utm_.+?(&|$)/, '')}"
+    url = entry.url.gsub(/&?\?*utm_.+?(&|$)/, '')
+    if url.match('youtube.com')
+      "#{entry.author} - #{entry.title} - #{url}"
+    else
+      "#{entry.title} - #{url}"
+    end
   end
 
   def get_entries_for(url)
