@@ -50,7 +50,7 @@ class PhotoPlugin
       feed = Feedjira::Feed.parse(xml)
       entries =
         feed.entries
-        .select { |x| x.published > Time.now - 12 * 60 * 60 }
+        .select { |x| x.published > Time.now - Settings.fresh_period * 60 * 60 }
         .reject { |x| already_posted[url].include?(x.published) }
     rescue Feedjira::NoParserAvailable
       p "Refetching for #{url}"

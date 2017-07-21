@@ -1,10 +1,11 @@
-user: 'user'
-nick: 'nick'
-server: 'server'
-use_ssl: true
-port: 6668
-channel: '#some_channel'
-refresh_period: 3600 #1 hour
+user: 'user'			# username to send to irc
+nick: 'nick'			# nickname of your bot
+server: 'server'		# irc server to connect to
+use_ssl: true			# do we use SSL
+port: 6668			# Port to which to connect
+channel: '#some_channel'	# where we are going to tell
+refresh_period: 3600		#1 hour
+fresh_period: 12		# entries posted this much time before are considered good for reporting
 
-rss_urls:
+rss_urls:			# array of urls
   []
