@@ -32,7 +32,12 @@ class PhotoPlugin
   end
 
   def format_entry(entry)
-    "#{entry.title}   #{entry.url.gsub(/&?\?*utm_.+?(&|$)/, '')}"
+    url = entry.url.gsub(/&?\?*utm_.+?(&|$)/, '')
+    if url.match('youtube.com')
+      "#{entry.author} - #{entry.title} - #{url}"
+    else
+      "#{entry.title} - #{url}"
+    end
   end
 
   def get_entries_for(url)
@@ -45,7 +50,7 @@ class PhotoPlugin
       feed = Feedjira::Feed.parse(xml)
       entries =
         feed.entries
-        .select { |x| x.published > Time.now - 12 * 60 * 60 }
+        .select { |x| x.published > Time.now - Settings.fresh_period * 60 * 60 }
         .reject { |x| already_posted[url].include?(x.published) }
     rescue Feedjira::NoParserAvailable
       p "Refetching for #{url}"
